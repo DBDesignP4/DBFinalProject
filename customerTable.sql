@@ -4,8 +4,8 @@ CREATE TABLE customer (
 	lName VARCHAR(25) NOT NULL,
 	DID INT,
 	TID INT,
-	startDate INT(6) NOT NULL,
-	endDate INT(6) NOT NULL,
+	startDate DATETIME NOT NULL,
+	endDate DATETIME NOT NULL,
 	FOREIGN KEY DID REFERENCES department.dID,
 	FOREIGN KEY TID REFERENCES transaction.tID
 );
