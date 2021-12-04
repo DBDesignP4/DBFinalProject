@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
+import java.util.Random;
 
 /**
 * 
@@ -126,27 +127,37 @@ public class Insert {
 
 
     /**
-     * TODO
+     * randomCustomerIDGenerator: Creates a random 5 digit number
+     * for customerID (cID)
      * 
      * @return
      */
     private static int randomCustomerIDGenerator() {
+        Random r = new Random();
+        int lowBound = 10000;
+        int highBound = 100000;
         
-        // TODO 
-        return -1; 
+        int result = r.nextInt(highBound - lowBound) + lowBound;
+    	
 
+        return result;
     }
     
 
     /**
-     * TODO
+     * randomTransactionIDGenerator: 
      * 
      * @return
      */
     private static int randomTransactionIDGenerator() {
+        Random r = new Random();
+        int lowBound = 1000000;
+        int highBound = 10000000;
+        
+        int result = r.nextInt(highBound - lowBound) + lowBound;
+    	
 
-        // TODO
-        return -1; 
+        return result;
     }
 
 
