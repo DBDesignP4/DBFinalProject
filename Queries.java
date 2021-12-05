@@ -119,9 +119,12 @@ public class Queries {
 		return permitSum + "," + licenseSum + "," + registrationSum + "," + stateIDSum;
 	}
 	
-	public String query4(String inputDate) {
-		String retval = "SELECT * FROM customer WHERE"
-				+ " cID < " + inputDate;
+	public String query4(String inputDID) {
+		String retval = "select fName, lName " +
+		"from Customer, Appointment, Department " +
+		"where Customer.cID = Appointment.CID and " +
+		"Appointment.status = 1 and Department.dID = Customer.DID " +
+		"and Department.dName = " + inputDID;
 		
 		return retval;
 	}

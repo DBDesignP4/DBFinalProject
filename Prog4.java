@@ -187,7 +187,21 @@ public class Prog4 {
 						System.out.println("Dep : " + t.get(arr.get(i)) + " Sum : " + arr.get(arr.get(i)));
 					}
 				} else if (option == 4) {
+					System.out.println("Enter the Department Number");
+					System.out.println("1 for Permit");
+					System.out.println("2 for License");
+					System.out.println("3 for Vehicle Registration");
+					System.out.println("4 for State ID");
 					
+					s = inputOption.next();
+					
+					String query = q.query4(s);
+					
+					ResultSet set = stmt.executeQuery(query);
+					
+					while (set.next()) {
+						System.out.println("First Name : " + set.getString(1) + " Last Name : " + set.getString(2));
+					}
 				}
 			}
 		}  catch (SQLException e) {
