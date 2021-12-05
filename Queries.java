@@ -120,8 +120,11 @@ public class Queries {
 	}
 	
 	public String query4(String inputDate) {
-		String retval = "SELECT * FROM customer WHERE"
-				+ " cID < " + inputDate;
+		String retval = "select fName, lName\n"
+				+ "from Customer, Appointment, Department \n"
+				+ "where Customer.cID = Appointment.CID and \n"
+				+ "Appointment.status = 1 and Department.dID = Customer.DID\n"
+				+ "and Department.dName = " + inputDate;
 		
 		return retval;
 	}
