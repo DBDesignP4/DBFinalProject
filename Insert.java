@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
 import java.util.Map;
+import java.util.Random;
 
 /**
 * 
@@ -275,5 +276,32 @@ public class Insert {
 			return false;
 		}
 	}
+
+    /**
+     * Helper function called from main to get a random number to decide whether
+     * or not a customer passed their appointment. Since we are deciding whether they 
+     * will pass their appointment or not, they way we went about implementation is:
+     *     
+     *      We want to give all the users a 80 percent chance of passing their tests. 
+     *      So we are going to get a random number form (0,10) and if the number is less than 
+     *      8 than the appointment is successful. Other wise they will fail their tests. 
+     * @return
+     */
+    private static int getStatus() {
+
+           Random r = new Random();
+           int highBound = 10; 
+           int result = r.nextInt(highBound); 
+
+           // O - 7 == PASSED TEST
+           if (result < 7) {
+               return 1; 
+           } 
+           
+           // 8 & 9 == FAILED TEST
+           else {
+               return 0; 
+           }
+    }
     
 }
