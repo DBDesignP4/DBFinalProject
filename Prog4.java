@@ -3,7 +3,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  * 
@@ -113,12 +115,78 @@ public class Prog4 {
 				System.exit(-1);
 			}
 			int option = Integer.parseInt(s);
-			String query = "";
+			Queries q = new Queries();
 			
 			// option 1
 			while (1 == 1) {
 				stmt = dbconn.createStatement();
+				
 				if (option == 1) {
+					System.out.println("Enter the date to be checked");
+					
+					s = inputOption.next();
+					
+					String query = q.query1(s);
+					
+					ResultSet set = stmt.executeQuery(query);
+					
+					while (set.next()) {
+						System.out.println(set.getString(1));
+					}
+				} else if (option == 2) {
+					String[] queries = q.query2().split(",");
+					
+					ResultSet set1 = stmt.executeQuery(queries[0]);
+					ResultSet set2 = stmt.executeQuery(queries[1]);
+					ResultSet set3 = stmt.executeQuery(queries[2]);
+					ResultSet set4 = stmt.executeQuery(queries[3]);
+					
+					set1.next();
+					set2.next();
+					set3.next();
+					set4.next();
+					
+					System.out.println(set1.getString(1));
+					System.out.println(set2.getString(1));
+					System.out.println(set3.getString(1));
+					System.out.println(set4.getString(1));
+				} else if (option == 3) {
+					System.out.println("Enter the Month to be checked");
+					
+					s = inputOption.next();
+					
+					String[] queries = q.query3(s).split(",");
+					
+					ResultSet set1 = stmt.executeQuery(queries[0]);
+					ResultSet set2 = stmt.executeQuery(queries[1]);
+					ResultSet set3 = stmt.executeQuery(queries[2]);
+					ResultSet set4 = stmt.executeQuery(queries[3]);
+					
+					set1.next();
+					set2.next();
+					set3.next();
+					set4.next();
+					
+					int sum1 = Integer.parseInt(set1.getString(1));
+					int sum2 = Integer.parseInt(set2.getString(1));
+					int sum3 = Integer.parseInt(set3.getString(1));
+					int sum4 = Integer.parseInt(set4.getString(1));
+					
+					TreeMap<Integer, String> t = new TreeMap<Integer, String>();
+					
+					// Put the sums instead of the integers below
+					t.put(sum1, "1");
+					t.put(sum2, "2");
+					t.put(sum3, "3");
+					t.put(sum4, "4");
+					
+					ArrayList<Integer> arr = new ArrayList<Integer>();
+					arr.addAll(t.keySet());
+					
+					for (int i = 0; i < 4; i++) {
+						System.out.println("Dep : " + t.get(arr.get(i)) + " Sum : " + arr.get(arr.get(i)));
+					}
+				} else if (option == 4) {
 					
 				}
 			}
