@@ -34,13 +34,13 @@ public class Queries {
 	 * @return Returns 4 queries for each department separated by comma
 	 */
 	public String query2() {
-		String permit = "SELECT COUNT(aID) FROM mihiry4.appointment WHERE "
+		String permit = "SELECT COUNT(aID) FROM zsf.appointment WHERE "
 				+ "EID = 1 and status = 1;";
-		String license = "SELECT COUNT(aID) FROM mihiry4.appointment WHERE "
+		String license = "SELECT COUNT(aID) FROM zsf.appointment WHERE "
 				+ "EID = 2 and status = 1;";
-		String registration = "SELECT COUNT(aID) FROM mihiry4.appointment WHERE "
+		String registration = "SELECT COUNT(aID) FROM zsf.appointment WHERE "
 				+ "EID = 3 and status = 1;";
-		String stateID = "SELECT COUNT(aID) FROM mihiry4.appointment WHERE "
+		String stateID = "SELECT COUNT(aID) FROM zsf.appointment WHERE "
 				+ "EID = 4 and status = 1;";
 		
 		return permit + "," + license + "," + registration + "," + stateID;
@@ -77,19 +77,19 @@ public class Queries {
 		String upperBound = splitted[1] + "/" + splitted[0] + "/" + endDate(splitted[0]);
 		
 		
-		String permitSum = "SELECT COUNT(tID) * 7 FROM mihiry4.transaction WHERE "
+		String permitSum = "SELECT COUNT(tID) * 7 FROM zsf.transaction WHERE "
 				+ "time >= " + lowerBound + " and "
 				+ "time <= " + upperBound + " and "
 				+ "DID = 1";
-		String licenseSum = "SELECT COUNT(tID) * 25 FROM mihiry4.transaction WHERE "
+		String licenseSum = "SELECT COUNT(tID) * 25 FROM zsf.transaction WHERE "
 				+ "time >= " + lowerBound + " and "
 				+ "time <= " + upperBound + " and "
 				+ "DID = 2";
-		String registrationSum = "SELECT COUNT(tID) * 100 FROM mihiry4.transaction WHERE "
+		String registrationSum = "SELECT COUNT(tID) * 100 FROM zsf.transaction WHERE "
 				+ "time >= " + lowerBound + " and "
 				+ "time <= " + upperBound + " and "
 				+ "DID = 3";
-		String stateIDSum = "SELECT COUNT(tID) * 12 FROM mihiry4.transaction WHERE "
+		String stateIDSum = "SELECT COUNT(tID) * 12 FROM zsf.transaction WHERE "
 				+ "time >= " + lowerBound + " and "
 				+ "time <= " + upperBound + " and "
 				+ "DID = 4";
@@ -121,10 +121,10 @@ public class Queries {
 	
 	public String query4(String inputDID) {
 		String retval = "select fName, lName " +
-		"from Customer, Appointment, Department " +
-		"where Customer.cID = Appointment.CID and " +
-		"Appointment.status = 1 and Department.dID = Customer.DID " +
-		"and Department.dName = " + inputDID;
+		"from zsf.Customer, zsf.Appointment, zsf.Department " +
+		"where zsf.Customer.cID = zsf.Appointment.CID and " +
+		"zsf.Appointment.status = 1 and zsf.Department.dID = zsf.Customer.DID " +
+		"and zsf.Department.dName = " + inputDID;
 		
 		return retval;
 	}
