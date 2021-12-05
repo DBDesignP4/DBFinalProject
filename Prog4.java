@@ -184,7 +184,7 @@ public class Prog4 {
 					arr.addAll(t.keySet());
 					
 					for (int i = 0; i < 4; i++) {
-						System.out.println("Dep : " + t.get(arr.get(i)) + " Sum : " + arr.get(arr.get(i)));
+						System.out.println("Dep : " + t.get(arr.get(i)) + " Sum : " + arr.get(i));
 					}
 				} else if (option == 4) {
 					System.out.println("Enter the Department Number");
