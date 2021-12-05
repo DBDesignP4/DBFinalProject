@@ -1,0 +1,12 @@
+INSERT INTO appointment VALUES (1, 10000, 1, 1);
+INSERT INTO appointment VALUES (2, 10001, 1, 1);
+INSERT INTO appointment VALUES (3, 10001, 2, 1);
+INSERT INTO appointment VALUES (4, 10002, 3, 1);
+INSERT INTO appointment VALUES (5, 10003, 4, 1);
+INSERT INTO appointment VALUES (6, 10004, 1, 1);
+INSERT INTO appointment VALUES (7, 10005, 3, 1);
+INSERT INTO appointment VALUES (8, 10006, 1, 1);
+INSERT INTO appointment VALUES (9, 10007, 4, 1);
+INSERT INTO appointment VALUES (10, 10008, 1, 0);
+INSERT INTO appointment VALUES (11, 10009, 3, 0);
+INSERT INTO appointment VALUES (12, 56361, 1, 0);

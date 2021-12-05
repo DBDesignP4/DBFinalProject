@@ -229,10 +229,10 @@ public class Insert {
      */
     private static String createCustomer(int cID, String fName, String lName, 
     		int dID, int tID, String startDate, String endDate) {
-    	String insertString = "INSERT INTO customerTable VALUES (";
+    	String insertString = "INSERT INTO customer VALUES (";
     	insertString = insertString + cID + ", '" + fName + "', '" + lName + "', " +
-    					dID + ", " + tID + ", " + startDate + ", " + endDate;
-    	insertString += ");";
+    					dID + ", " + tID + ", '" + startDate + "', '" + endDate;
+    	insertString += "');";
 		return insertString;
 	}
 
@@ -245,7 +245,7 @@ public class Insert {
      * @return
      */
 	private static String createAppointment(int dID, int cID, int statusInt) {
-    	String insertString = "INSERT INTO appointmentTable VALUES (";
+    	String insertString = "INSERT INTO appointment VALUES (";
     	int apptId = AppointmentIDGenerator();
     	insertString = insertString + apptId + ", "
     			+ cID + ", " + eIDs[dID] + ", " + statusInt;
@@ -266,11 +266,11 @@ public class Insert {
 		} else if(dID == 4) {
 			amount = 12;
 		}
-    	String insertString = "INSERT INTO transactionTable VALUES (";
+    	String insertString = "INSERT INTO transaction VALUES (";
     	int tID = randomTransactionIDGenerator();
-    	insertString = insertString + tID + ", " + amount + ", " + dID + ", "
+    	insertString = insertString + tID + ", " + amount + ", " + dID + ", '"
     			+ startDate;
-    	insertString += ");";
+    	insertString += "');";
 		return insertString;
     	
 
