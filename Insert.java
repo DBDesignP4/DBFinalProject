@@ -29,7 +29,7 @@ public class Insert {
     static int[] eIDs = new int[]{0,1,2,3,4};
     static ArrayList<String> customerList = new ArrayList<String>();
     static ArrayList<String> appointmentList = new ArrayList<String>();
-
+    static ArrayList<String> transactionList = new ArrayList<String>();
     
     public static void main(String[] args) {
 
@@ -47,7 +47,7 @@ public class Insert {
             System.out.println("Do you have an ID? (Y/N)");
 	        boolean haveId = false; 
 	        String input = scanner.nextLine().toUpperCase();
-	
+            int stat = getStatus();
 	        if (input.equals("Y")) {
 	
 	            System.out.println("Please enter your cID: ");
@@ -55,7 +55,7 @@ public class Insert {
 	            
 	            int dID = getServiceID(scanner);
 	
-	            String newApointmentSQL = createAppointment(dID, cID, false);
+	            String newApointmentSQL = createAppointment(dID, cID, stat);
 	            
 	            System.out.println(newApointmentSQL);
 	           
@@ -86,16 +86,21 @@ public class Insert {
 	            
 	            
 	            String newCustomerSQL = createCustomer(cID, fName, lName, dID, tID ,startDate, endDate);
-	            String newApointmentSQL = createAppointment(dID, cID, false);
+	            String newApointmentSQL = createAppointment(dID, cID, stat);
+	            
+	            if(stat==1) {
+	            	String newTransactionsSQL = createTransaction(dID, startDate);
+		            System.out.println(newTransactionsSQL);
+		            transactionList.add(newTransactionsSQL);
+	            }
 	
 	            System.out.println(newCustomerSQL);
 	            System.out.println(newApointmentSQL);
-	
+	            
 	            customerList.add(newCustomerSQL);
 	            appointmentList.add(newApointmentSQL);
 	            
-	            
-	            
+	  
 	        }
 	        
 	        File customersSQL = new File("insertCustomers.sql");
@@ -192,10 +197,7 @@ public class Insert {
      * @param status
      * @return
      */
-	private static String createAppointment(int dID, int cID, boolean status) {
-    	int statusInt = 0;
-    	if(status == true)
-    		statusInt = 1;
+	private static String createAppointment(int dID, int cID, int statusInt) {
     	String insertString = "INSERT INTO appointmentTable VALUES (";
     	int apptId = randomAppointmentIDGenerator();
     	insertString = insertString + apptId + ", "
@@ -203,6 +205,29 @@ public class Insert {
     	insertString += ");";
     	
 		return insertString;
+	}
+	
+	
+	private static String createTransaction(int dID, String startDate) {
+		int amount = 0;
+		if (dID == 1){
+			amount = 7;
+		} else if (dID == 2) {
+			amount = 25;
+		} else if(dID == 3) {
+			amount = 100;
+		} else if(dID == 4) {
+			amount = 12;
+		}
+    	String insertString = "INSERT INTO transactionTable VALUES (";
+    	int tID = randomTransactionIDGenerator();
+    	insertString = insertString + tID + ", " + amount + ", " + dID + ", "
+    			+ startDate;
+    	insertString += ");";
+		return insertString;
+    	
+
+
 	}
 
 
