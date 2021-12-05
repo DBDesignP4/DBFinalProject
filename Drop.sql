@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS appointmentTable,customerTable,departmentTable,employeeTable,transactionTable;
