@@ -30,9 +30,14 @@ public class Insert {
     static ArrayList<String> customerList = new ArrayList<String>();
     static ArrayList<String> appointmentList = new ArrayList<String>();
     static ArrayList<String> transactionList = new ArrayList<String>();
+    static ArrayList<String> DepartmentList = new ArrayList<String>();
+    static ArrayList<String> employeeList = new ArrayList<String>();
+
     static int appointmentCounter = 11; 
     
     public static void main(String[] args) {
+    	defaultInserts inserts = new defaultInserts();
+    	populateDefaultData(inserts);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -115,41 +120,71 @@ public class Insert {
 	  
 	        }
 	        
-	        File customersSQL = new File("insertCustomers.sql");
-		    prevFileRemover(customersSQL);
-	        FileOutputStream fosCSQL = null;
-	        try {
-	        	fosCSQL = new FileOutputStream(customersSQL);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			};
-	        insertIntoSqlFile(fosCSQL,1);
+	        WriteToSQLFile("insertCustomers.sql",1);
+	        WriteToSQLFile("insertAppointments.sql",2);
+	        WriteToSQLFile("insertTransactions.sql",3);
+	        WriteToSQLFile("insertDepartments.sql",4);
+	        WriteToSQLFile("insertEmployees.sql",5);
 
-	        
-	        File appointmentsSQL = new File("insertAppointment.sql");
-		    prevFileRemover(appointmentsSQL);
-	        FileOutputStream fosASQL = null;
-	        try {
-	        	fosASQL = new FileOutputStream(appointmentsSQL);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			};
-	        insertIntoSqlFile(fosASQL,2);
 
+	    
 	        
         }
     }
 
 
-    private static void insertIntoSqlFile(FileOutputStream fos, int input) {
+    private static void populateDefaultData(defaultInserts inserts) {
+		// TODO Auto-generated method stub
+		for(String s:inserts.getDefaultCustomerInserts()) {
+			customerList.add(s);
+		}
+		
+		for(String s:inserts.getDefaultAppointmentInserts()) {
+			appointmentList.add(s);
+		}
+		
+		for(String s:inserts.getDefaultTransactionInserts()) {
+			transactionList.add(s);
+		}
+		
+		for(String s:inserts.getDefaultDepartmentInserts()) {
+			DepartmentList.add(s);
+		}
+		
+		for(String s:inserts.getDefaultEmployeeInserts()) {
+			employeeList.add(s);
+		}
+	}
+    
+    
+    private static void WriteToSQLFile(String SqlFileName, int table) {
+    	 File SQL = new File(SqlFileName);
+		    prevFileRemover(SQL);
+	        FileOutputStream fos = null;
+	        try {
+	        	fos = new FileOutputStream(SQL);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};
+	        insertIntoSqlFile(fos,table);
+
+    }
+
+
+	private static void insertIntoSqlFile(FileOutputStream fos, int input) {
 		// TODO Auto-generated method stub
     	ArrayList<String> ar = null;
     	if(input == 1) {
     		ar = customerList;
     	}else if(input == 2) {
     		ar = appointmentList;
+    	}else if(input == 3) {
+    		ar = transactionList;
+    	}else if(input == 4) {
+    		ar = DepartmentList;
+    	}else {
+    		ar = employeeList;
     	}
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
     	for(String s:ar) {
