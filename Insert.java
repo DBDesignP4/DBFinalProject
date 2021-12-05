@@ -1,10 +1,11 @@
-import java.security.Timestamp;
+import java.io.File;
+import java.security.Timestamp; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
-import java.util.Random;
+import java.util.Map;
 
 /**
 * 
@@ -19,52 +20,151 @@ import java.util.Random;
 public class Insert {
 
     ArrayList<Integer> cIDs = new ArrayList<Integer>();
+    static int[] eIDs = new int[]{0,1,2,3,4};
+    static ArrayList<String> customerList = new ArrayList<String>();
+    static ArrayList<String> appointmentList = new ArrayList<String>();
 
+    
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("----------Welcome to Program 4----------\n");
-        System.out.println("Do you have an ID? (Y/N)");
+        System.out.println("----------Welcome to Program 4 Data Creator----------\n");
 
-        boolean haveId = false; 
-        String id = scanner.nextLine();
+        while(1==1) {
+        	System.out.println("\nPress 1 to run the program, 0 to exit");
+        	String run = scanner.nextLine();
+        	if(run.equals("0")) {
+        		System.out.println("Thanks for using Prog4. Exiting...");
+        		System.exit(0);
+        	} 
+            System.out.println("Do you have an ID? (Y/N)");
+	        boolean haveId = false; 
+	        String input = scanner.nextLine().toUpperCase();
+	
+	        if (input.equals("Y")) {
+	
+	            System.out.println("Please enter your cID: ");
+	            int cID = Integer.parseInt(scanner.nextLine());
+	            
+	            int dID = getServiceID(scanner);
+	
+	            String newApointmentSQL = createAppointment(dID, cID, false);
+	            
+	            System.out.println(newApointmentSQL);
+	           
+	        } else if (input.equals("N")) {
+	            System.out.println("Enter first name:");
+	            String fName = scanner.nextLine(); 
+	
+	            System.out.println("Enter last name:");
+	            String lName = scanner.nextLine(); 
+	            
+	            int cID = randomCustomerIDGenerator();
+	            System.out.print("\nYour assigned cID number is:");
+	            System.out.println(cID);
+	            System.out.println("(Please save this number for future references)");
+	            System.out.println();
+	
+	            int dID = getServiceID(scanner);
+	
+	            int tID = randomTransactionIDGenerator();
+	
+	            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	            Calendar calendar = Calendar.getInstance();
+	            calendar.setTime(new Date());
+	
+	            // Start date + End Date depending on department
+	            String startDate = sdf.format(calendar.getTime());
+	            String endDate = getExpirationDate(dID, sdf, calendar);
+	            
+	            
+	            String newCustomerSQL = createCustomer(cID, fName, lName, dID, tID ,startDate, endDate);
+	            String newApointmentSQL = createAppointment(dID, cID, false);
+	
+	            System.out.println(newCustomerSQL);
+	            System.out.println(newApointmentSQL);
+	
+	            customerList.add(newCustomerSQL);
+	            appointmentList.add(newApointmentSQL);
+	            
+	            
+	            
+	        }
+//	        
+//	        File customerSQL = new File("insertCustomers.sql");
+//	        prevFileRemover(customerSQL);
+//	        insertIntoSqlFile(customerSQL);
 
-        if (id.equals("Y")) {
+            // at the end of while loop write all strings from set to a sql file
+	        
+	        
+            // need to write SQL queires to a new sql file using buffered reader/writer
 
-            System.out.println("Please enter your ID: ");
-            id = scanner.nextLine();
-
-        } else if (id.equals("N")) {
-            System.out.println("Enter first name:");
-            String fName = scanner.nextLine(); 
-
-            System.out.println("Enter last name:");
-            String lName = scanner.nextLine(); 
-
-            int dID = setAppointment(scanner);
-
-            int cID = randomCustomerIDGenerator();
-
-            int tID = randomTransactionIDGenerator();
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(new Date());
-
-            // Start date + End Date depending on department
-            String startDate = sdf.format(calendar.getTime());
-            String endDate = getExpirationDate(dID, sdf, calendar);
-
-
-            // Next steps: 
-            //
-            // Throw customer into table. 
+	        
         }
     }
 
 
+    private static void insertIntoSqlFile(File SqlFileName) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+	/**
+	 * prevFileRemover: removes a file if it exists already
+	 * @param file
+	 */
+	private static void prevFileRemover(File file) {
+		 if(file.exists())
+	        	file.delete();
+	}
+	
+
+
+	/**
+     * 
+     * @param cID
+     * @param fName
+     * @param lName
+     * @param dID
+     * @param tID
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    private static String createCustomer(int cID, String fName, String lName, 
+    		int dID, int tID, String startDate, String endDate) {
+    	String insertString = "INSERT INTO customerTable VALUES (";
+    	insertString = insertString + cID + ", '" + fName + "', '" + lName + "', " +
+    					dID + ", " + tID + ", " + startDate + ", " + endDate;
+    	insertString += ");";
+		return insertString;
+	}
+
+
     /**
+     * 
+     * @param dID
+     * @param cID
+     * @param status
+     * @return
+     */
+	private static String createAppointment(int dID, int cID, boolean status) {
+    	int statusInt = 0;
+    	if(status == true)
+    		statusInt = 1;
+    	String insertString = "INSERT INTO appointmentTable VALUES (";
+    	int apptId = randomAppointmentIDGenerator();
+    	insertString = insertString + apptId + ", "
+    			+ cID + ", " + eIDs[dID] + ", " + statusInt;
+    	insertString += ");";
+    	
+		return insertString;
+	}
+
+
+	/**
      * 
      * TODO
      * 
@@ -116,7 +216,7 @@ public class Insert {
      * @param scanner
      * @return
      */
-    private static int setAppointment(Scanner scanner) {
+    private static int getServiceID(Scanner scanner) {
 
 
         System.out.println("(1) Permit (2) License (3) Vehicle Registration (4) State ID");
@@ -127,39 +227,40 @@ public class Insert {
 
 
     /**
-     * randomCustomerIDGenerator: Creates a random 5 digit number
-     * for customerID (cID)
+     * TODO
      * 
      * @return
      */
     private static int randomCustomerIDGenerator() {
-        Random r = new Random();
-        int lowBound = 10000;
-        int highBound = 100000;
         
-        int result = r.nextInt(highBound - lowBound) + lowBound;
-    	
+        // TODO 
+        return -1; 
 
-        return result;
     }
     
 
     /**
-     * randomTransactionIDGenerator: 
+     * TODO
      * 
      * @return
      */
     private static int randomTransactionIDGenerator() {
-        Random r = new Random();
-        int lowBound = 1000000;
-        int highBound = 10000000;
-        
-        int result = r.nextInt(highBound - lowBound) + lowBound;
-    	
 
-        return result;
+        // TODO
+        return -1; 
     }
+    
+    /**
+     * TODO
+     * 
+     * @return
+     */
+    private static int randomAppointmentIDGenerator() {
+        
+        // TODO 
+        return -1; 
 
+    }
 
     /**
 	 * isNumeric: checks if a string is numeric
