@@ -1,4 +1,9 @@
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.security.Timestamp; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -92,24 +97,60 @@ public class Insert {
 	            
 	            
 	        }
-//	        
-//	        File customerSQL = new File("insertCustomers.sql");
-//	        prevFileRemover(customerSQL);
-//	        insertIntoSqlFile(customerSQL);
+	        
+	        File customersSQL = new File("insertCustomers.sql");
+		    prevFileRemover(customersSQL);
+	        FileOutputStream fosCSQL = null;
+	        try {
+	        	fosCSQL = new FileOutputStream(customersSQL);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};
+	        insertIntoSqlFile(fosCSQL,1);
 
-            // at the end of while loop write all strings from set to a sql file
 	        
-	        
-            // need to write SQL queires to a new sql file using buffered reader/writer
+	        File appointmentsSQL = new File("insertAppointment.sql");
+		    prevFileRemover(appointmentsSQL);
+	        FileOutputStream fosASQL = null;
+	        try {
+	        	fosASQL = new FileOutputStream(appointmentsSQL);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};
+	        insertIntoSqlFile(fosASQL,2);
 
 	        
         }
     }
 
 
-    private static void insertIntoSqlFile(File SqlFileName) {
+    private static void insertIntoSqlFile(FileOutputStream fos, int input) {
 		// TODO Auto-generated method stub
-		
+    	ArrayList<String> ar = null;
+    	if(input == 1) {
+    		ar = customerList;
+    	}else if(input == 2) {
+    		ar = appointmentList;
+    	}
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+    	for(String s:ar) {
+			try {
+				s += "\n";
+				bw.write(s);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+		try {
+			bw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
     
 	/**
@@ -225,6 +266,7 @@ public class Insert {
 
         return Integer.parseInt(scanner.nextLine()); 
     }
+
 
 
     /**
