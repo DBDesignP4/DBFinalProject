@@ -228,40 +228,39 @@ public class Insert {
 
 
     /**
-     * TODO
+     * randomCustomerIDGenerator: Creates a random 5 digit number
+     * for customerID (cID)
      * 
      * @return
      */
     private static int randomCustomerIDGenerator() {
+        Random r = new Random();
+        int lowBound = 10000;
+        int highBound = 100000;
         
-        // TODO 
-        return -1; 
+        int result = r.nextInt(highBound - lowBound) + lowBound;
+    	
 
+        return result;
     }
     
 
     /**
-     * TODO
+     * randomTransactionIDGenerator: 
      * 
      * @return
      */
     private static int randomTransactionIDGenerator() {
-
-        // TODO
-        return -1; 
-    }
-    
-    /**
-     * TODO
-     * 
-     * @return
-     */
-    private static int randomAppointmentIDGenerator() {
+        Random r = new Random();
+        int lowBound = 1000000;
+        int highBound = 10000000;
         
-        // TODO 
-        return -1; 
+        int result = r.nextInt(highBound - lowBound) + lowBound;
+    	
 
+        return result;
     }
+
 
     /**
 	 * isNumeric: checks if a string is numeric
@@ -276,6 +275,20 @@ public class Insert {
 			return false;
 		}
 	}
+    
+    
+    /**
+     * TODO
+     * 
+     * @return
+     */
+    private static int randomAppointmentIDGenerator() {
+        
+        // TODO 
+        return -1; 
+
+    }
+
 
     /**
      * Helper function called from main to get a random number to decide whether
