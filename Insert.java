@@ -30,6 +30,7 @@ public class Insert {
     static ArrayList<String> customerList = new ArrayList<String>();
     static ArrayList<String> appointmentList = new ArrayList<String>();
     static ArrayList<String> transactionList = new ArrayList<String>();
+    static int appointmentCounter = 11; 
     
     public static void main(String[] args) {
 
@@ -54,10 +55,21 @@ public class Insert {
 	            int cID = Integer.parseInt(scanner.nextLine());
 	            
 	            int dID = getServiceID(scanner);
+
+                // TODO 
+                //      create global Hashmap <int, List<int>> {10000: [0, 0, 0, 0]}
+                //      if dID returns 2 
+                //          check 
+
+
+                // TODO 
+                //      updating when license expires in Hashmap 
 	
 	            String newApointmentSQL = createAppointment(dID, cID, stat);
 	            
 	            System.out.println(newApointmentSQL);
+
+                appointmentList.add(newApointmentSQL);
 	           
 	        } else if (input.equals("N")) {
 	            System.out.println("Enter first name:");
@@ -199,7 +211,7 @@ public class Insert {
      */
 	private static String createAppointment(int dID, int cID, int statusInt) {
     	String insertString = "INSERT INTO appointmentTable VALUES (";
-    	int apptId = randomAppointmentIDGenerator();
+    	int apptId = AppointmentIDGenerator();
     	insertString = insertString + apptId + ", "
     			+ cID + ", " + eIDs[dID] + ", " + statusInt;
     	insertString += ");";
@@ -313,7 +325,7 @@ public class Insert {
     
 
     /**
-     * randomTransactionIDGenerator: 
+     * randomTransactionIDGenerator: 7 digit ID
      * 
      * @return
      */
@@ -349,10 +361,9 @@ public class Insert {
      * 
      * @return
      */
-    private static int randomAppointmentIDGenerator() {
+    private static int AppointmentIDGenerator() {
         
-        // TODO 
-        return -1; 
+        return appointmentCounter + 1; 
 
     }
 
