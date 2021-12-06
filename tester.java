@@ -39,6 +39,14 @@ public class tester {
 
         String future = sdf.format(c.getTime());
         System.out.println(future);
+        
+        Queries q = new Queries();
+        
+        System.out.println(q.query1("01/05/2021"));
+
+        
+        
+        System.out.println(q.query3("05/2021"));
 
     }
     

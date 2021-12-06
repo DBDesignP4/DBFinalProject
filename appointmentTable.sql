@@ -6,4 +6,3 @@ CREATE TABLE appointment (
         FOREIGN KEY (CID) REFERENCES customer(cID),
         FOREIGN KEY (EID) REFERENCES employee(eID)
 );
-
