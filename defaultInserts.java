@@ -11,7 +11,6 @@ public class defaultInserts {
 				List.of(
 						"INSERT INTO customer VALUES (10000,'Amy','apple',1,1000001,TO_DATE('2021-12-04','YYYY/MM/DD'),TO_DATE('2033-12-01','YYYY/MM/DD'));",
 						"INSERT INTO customer VALUES (10001,'Bob','branch',1,1000002,TO_DATE('2021-12-04','YYYY/MM/DD'),TO_DATE('2033-12-01','YYYY/MM/DD'));",
-						"INSERT INTO customer VALUES (10001,'Bob','branch',2,1000003,TO_DATE('2021-12-04','YYYY/MM/DD'),TO_DATE('2033-12-01','YYYY/MM/DD'));",
 						"INSERT INTO customer VALUES (10002,'Camila','carrot',3,1000004,TO_DATE('2021-12-04','YYYY/MM/DD'),TO_DATE('2033-12-01','YYYY/MM/DD'));",
 						"INSERT INTO customer VALUES (10003,'Dylan','duck',4,1000005,TO_DATE('2021-12-04','YYYY/MM/DD'),TO_DATE('2033-12-01','YYYY/MM/DD'));",
 						"INSERT INTO customer VALUES (10004,'Emily','eagle',1,1000006,TO_DATE('2021-12-04','YYYY/MM/DD'),TO_DATE('2033-12-01','YYYY/MM/DD'));",
