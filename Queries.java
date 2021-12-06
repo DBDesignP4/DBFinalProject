@@ -21,10 +21,10 @@ public class Queries {
 	public String query1(String inputDate) {
 		String[] split = inputDate.split("/");
 		
-		String formatted = split[2] + "/" + split[0] + "/" + split[1];
+		String formatted = split[2] + "-" + split[0] + "-" + split[1];
 		
 		String retval = "SELECT * FROM zsf.customer WHERE "
-				+ "cID < " + formatted;
+				+ "cID < TO_DATE('" + formatted + "', 'YYYY/MM/DD')";
 		
 		return retval;
 	}
@@ -72,26 +72,26 @@ public class Queries {
 		// Split the input MM/YYYY to change the order into YYYY/MM
 		String[] splitted = inputMonth.split("/");
 		// Start date of the month
-		String lowerBound = splitted[1] + "/" + splitted[0] + "/" + "01";
+		String lowerBound = splitted[1] + "-" + splitted[0] + "-" + "01";
 		// End date of the month
-		String upperBound = splitted[1] + "/" + splitted[0] + "/" + endDate(splitted[0]);
+		String upperBound = splitted[1] + "-" + splitted[0] + "-" + endDate(splitted[0]);
 		
 		
 		String permitSum = "SELECT COUNT(tID) * 7 FROM zsf.transact WHERE "
-				+ "time >= " + lowerBound + " and "
-				+ "time <= " + upperBound + " and "
+				+ "time >= TO_DATE('" + lowerBound + "', 'YYYY/MM/DD') and "
+				+ "time <= TO_DATE('" + upperBound + "', 'YYYY/MM/DD') and "
 				+ "DID = 1";
 		String licenseSum = "SELECT COUNT(tID) * 25 FROM zsf.transact WHERE "
-				+ "time >= " + lowerBound + " and "
-				+ "time <= " + upperBound + " and "
+				+ "time >= TO_DATE('" + lowerBound + "', 'YYYY/MM/DD') and "
+				+ "time <= TO_DATE('" + upperBound + "', 'YYYY/MM/DD') and "
 				+ "DID = 2";
 		String registrationSum = "SELECT COUNT(tID) * 100 FROM zsf.transact WHERE "
-				+ "time >= " + lowerBound + " and "
-				+ "time <= " + upperBound + " and "
+				+ "time >= TO_DATE('" + lowerBound + "', 'YYYY/MM/DD') and "
+				+ "time <= TO_DATE('" + upperBound + "', 'YYYY/MM/DD') and "
 				+ "DID = 3";
 		String stateIDSum = "SELECT COUNT(tID) * 12 FROM zsf.transact WHERE "
-				+ "time >= " + lowerBound + " and "
-				+ "time <= " + upperBound + " and "
+				+ "time >= TO_DATE('" + lowerBound + "', 'YYYY/MM/DD') and "
+				+ "time <= TO_DATE('" + upperBound + "', 'YYYY/MM/DD') and "
 				+ "DID = 4";
 		
 		// #########################################################
