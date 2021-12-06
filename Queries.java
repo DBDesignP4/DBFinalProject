@@ -18,6 +18,14 @@ public class Queries {
 	public Queries() {
 	}
 	
+	/**
+	 * Constructs the sql statement as a String for query1.
+	 * 
+	 * Query 1 takes in inputDate in the form of MM/DD/YYYY and checks
+	 * in the database 
+	 * @param inputDate
+	 * @return
+	 */
 	public String query1(String inputDate) {
 		String[] split = inputDate.split("/");
 		
@@ -42,6 +50,8 @@ public class Queries {
 				+ "EID = 3 and status = 1";
 		String stateID = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
 				+ "EID = 4 and status = 1";
+		
+		
 		
 		return permit + "," + license + "," + registration + "," + stateID;
 	}
