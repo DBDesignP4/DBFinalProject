@@ -45,15 +45,15 @@ public class defaultInserts {
 	public ArrayList<String> getDefaultTransactionInserts() {
 		ArrayList<String> res = new ArrayList<>(
 				List.of(
-						"INSERT INTO transaction VALUES (1000001,7,1,'2021-12-04');",
-						"INSERT INTO transaction VALUES (1000002,7,1,'2021-12-04');",
-						"INSERT INTO transaction VALUES (1000003,25,2,'2021-12-04');",
-						"INSERT INTO transaction VALUES (1000004,100,3,'2021-12-04');",
-						"INSERT INTO transaction VALUES (1000005,12,4,'2021-12-04');",
-						"INSERT INTO transaction VALUES (1000006,7,1,'2021-12-04');",
-						"INSERT INTO transaction VALUES (1000007,100,3,'2021-12-04');",
-						"INSERT INTO transaction VALUES (1000008,7,1,'2021-12-04');",
-						"INSERT INTO transaction VALUES (1000009,12,4,'2021-12-04');"));
+						"INSERT INTO transact VALUES (1000001,7,1,'2021-12-04');",
+						"INSERT INTO transact VALUES (1000002,7,1,'2021-12-04');",
+						"INSERT INTO transact VALUES (1000003,25,2,'2021-12-04');",
+						"INSERT INTO transact VALUES (1000004,100,3,'2021-12-04');",
+						"INSERT INTO transact VALUES (1000005,12,4,'2021-12-04');",
+						"INSERT INTO transact VALUES (1000006,7,1,'2021-12-04');",
+						"INSERT INTO transact VALUES (1000007,100,3,'2021-12-04');",
+						"INSERT INTO transact VALUES (1000008,7,1,'2021-12-04');",
+						"INSERT INTO transact VALUES (1000009,12,4,'2021-12-04');"));
 		return res;
 	}
 
