@@ -106,24 +106,52 @@ public class deleteTool {
 						System.out.println("Enter CID of the customer you want to delete:");
 						String cid = input.next();
 						String[] res = deleteQueries.query1(cid);
-						stmt.executeQuery(res[0]);
+						//remove appointment with that cid
 						stmt.executeQuery(res[1]);
+						stmt = dbconn.createStatement();
+						//remove customer from customer table
+						stmt.executeQuery(res[0]);
 					// option 2
 					} else if (option == 2) {
-						break;
+						System.out.println("Enter EID of the employee you want to delete:");
+						String eid = input.next();
+						String[] res = deleteQueries.query2(eid);
+						// remove appointment with that eid
+						stmt.executeQuery(res[0]);
+						stmt = dbconn.createStatement();
+						//remove employee from employee table
+						stmt.executeQuery(res[1]);
 					// option 3
 					} else if (option == 3) {
-						break;
+						System.out.println("Enter AID of the employee you want to delete:");
+						String aid = input.next();
+						String res = deleteQueries.query3(aid);
+						stmt.executeQuery(res);
 					//option 4
 					} else if (option == 4) {
-						break;
+						System.out.println("Enter DID of the employee you want to delete:");
+						String did = input.next();
+						String[] res = deleteQueries.query4(did);
+						stmt.executeQuery(res[0]);
+						stmt = dbconn.createStatement();
+						stmt.executeQuery(res[1]);
+						stmt = dbconn.createStatement();
+						stmt.executeQuery(res[2]);
+						stmt = dbconn.createStatement();
+						stmt.executeQuery(res[3]);
 					//optioni 5
 					} else if(option == 5){
-						break;
+						System.out.println("Enter TID of the employee you want to delete:");
+						String tid = input.next();
+						String[] res = deleteQueries.query5(tid);
+						stmt.executeQuery(res[0]);
+						stmt = dbconn.createStatement();
+						stmt.executeQuery(res[1]);
 					} else {
+						System.out.println("Thanks for using deletion tool. Exiting...\n");
 						break;
 					}
-					System.out.println("Choose a number from 1-5. Any other number to quit");
+					System.out.println("\nChoose a number from 1-5. Any other number to quit");
 					option = Integer.parseInt(input.next());
 				}
 			} catch (SQLException e) {
