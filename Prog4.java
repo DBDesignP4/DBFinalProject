@@ -135,21 +135,48 @@ public class Prog4 {
 					}
 				} else if (option == 2) {
 					String[] queries = q.query2().split(",");
-					
+				
+					System.out.println(queries[0]);
+
 					ResultSet set1 = stmt.executeQuery(queries[0]);
-					ResultSet set2 = stmt.executeQuery(queries[1]);
-					ResultSet set3 = stmt.executeQuery(queries[2]);
-					ResultSet set4 = stmt.executeQuery(queries[3]);
+					//ResultSet set2 = stmt.executeQuery(queries[1]);
+					//ResultSet set3 = stmt.executeQuery(queries[2]);
+					//ResultSet set4 = stmt.executeQuery(queries[3]);
+				
+
+
+					while (set1.next()) { 
+						System.out.println(set1.getString(1));
+					}
 					
+					ResultSet set2 = stmt.executeQuery(queries[1]);
+					while (set2.next()) {
+						System.out.println(set2.getString(1));
+					}
+
+
+					ResultSet set3 = stmt.executeQuery(queries[2]);
+					while (set3.next()) {
+                                                System.out.println(set3.getString(1));
+                                        }
+
+					ResultSet set4 = stmt.executeQuery(queries[1]);
+					while (set4.next()) {
+                                                System.out.println(set4.getString(1));
+                                        }
+
+
+					/**
 					set1.next();
 					set2.next();
 					set3.next();
 					set4.next();
-					
-					System.out.println(set1.getString(1));
-					System.out.println(set2.getString(1));
-					System.out.println(set3.getString(1));
-					System.out.println(set4.getString(1));
+
+					System.out.println(set1.getInt(1));
+					System.out.println(set2.getInt(1));
+					System.out.println(set3.getInt(1));
+					System.out.println(set4.getInt(1));
+					**/			
 				} else if (option == 3) {
 					System.out.println("Enter the Month to be checked");
 					

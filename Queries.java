@@ -35,13 +35,13 @@ public class Queries {
 	 */
 	public String query2() {
 		String permit = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
-				+ "EID = 1 and status = 1;";
+				+ "EID = 1 and status = 1";
 		String license = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
-				+ "EID = 2 and status = 1;";
+				+ "EID = 2 and status = 1";
 		String registration = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
-				+ "EID = 3 and status = 1;";
+				+ "EID = 3 and status = 1";
 		String stateID = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
-				+ "EID = 4 and status = 1;";
+				+ "EID = 4 and status = 1";
 		
 		return permit + "," + license + "," + registration + "," + stateID;
 	}
