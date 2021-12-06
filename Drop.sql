@@ -1,1 +1,5 @@
-DROP TABLE IF EXISTS appointmentTable,customerTable,departmentTable,employeeTable,transactionTable;
+DROP TABLE appointment;
+DROP TABLE customer;
+DROP TABLE employee;
+DROP TABLE transact;
+DROP TABLE department;
