@@ -7,6 +7,6 @@ CREATE TABLE customer (
 	startDate DATE NOT NULL,
 	endDate DATE NOT NULL,
 	FOREIGN KEY (DID) REFERENCES department(dID),
-	FOREIGN KEY (TID) REFERENCES transaction(tID)
+	FOREIGN KEY (TID) REFERENCES transact(tID)
 );
 
