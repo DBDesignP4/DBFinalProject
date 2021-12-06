@@ -24,7 +24,7 @@ public class Queries {
 		String formatted = split[2] + "-" + split[0] + "-" + split[1];
 		
 		String retval = "SELECT * FROM zsf.customer WHERE "
-				+ "cID < TO_DATE('" + formatted + "', 'YYYY/MM/DD')";
+				+ "endDate < TO_DATE('" + formatted + "', 'YYYY/MM/DD')";
 		
 		return retval;
 	}
