@@ -109,7 +109,7 @@ public class Insert {
 	            String newApointmentSQL = createAppointment(dID, cID, stat);
 	            
 	            if(stat==1) {
-	            	String newTransactionsSQL = createTransaction(dID, startDate);
+	            	String newTransactionsSQL = createTransaction(dID, tID, startDate);
 		            System.out.println(newTransactionsSQL);
 		            transactionList.add(newTransactionsSQL);
 	            }
@@ -265,7 +265,7 @@ public class Insert {
 	}
 	
 	
-	private static String createTransaction(int dID, String startDate) {
+	private static String createTransaction(int dID, int tID, String startDate) {
 		int amount = 0;
 		if (dID == 1){
 			amount = 7;
@@ -277,7 +277,6 @@ public class Insert {
 			amount = 12;
 		}
     	String insertString = "INSERT INTO transact VALUES (";
-    	int tID = randomTransactionIDGenerator();
     	insertString = insertString + tID + ", " + amount + ", " + dID + ", TO_DATE('"
     			+ startDate;
     	insertString += "','YYYY/MM/DD');";
