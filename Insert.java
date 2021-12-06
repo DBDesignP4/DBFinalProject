@@ -100,9 +100,12 @@ public class Insert {
 	            // Start date + End Date depending on department
 	            String startDate = sdf.format(calendar.getTime());
 	            String endDate = getExpirationDate(dID, sdf, calendar);
-	            
-	            
-	            String newCustomerSQL = createCustomer(cID, fName, lName, dID, tID ,startDate, endDate);
+	            String newCustomerSQL;
+	            if(stat==1)
+	            	newCustomerSQL = createCustomer(cID, fName, lName, dID, tID ,startDate, endDate);
+	            else 
+	            	newCustomerSQL = createCustomer(cID, fName, lName, dID, -1 ,startDate, endDate);
+
 	            String newApointmentSQL = createAppointment(dID, cID, stat);
 	            
 	            if(stat==1) {
@@ -229,9 +232,16 @@ public class Insert {
      */
     private static String createCustomer(int cID, String fName, String lName, 
     		int dID, int tID, String startDate, String endDate) {
+    		
     	String insertString = "INSERT INTO customer VALUES (";
     	insertString = insertString + cID + ", '" + fName + "', '" + lName + "', " +
-    					dID + ", " + tID + ", '" + startDate + "', '" + endDate;
+    					dID + ", "; 
+    	if(tID != -1) {
+    		insertString += tID;
+    	} else {
+    		insertString += "NULL";
+    	}
+    	insertString += ", '" + startDate + "', '" + endDate;
     	insertString += "');";
 		return insertString;
 	}
