@@ -1,12 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 
+ * @author Mihir yadav, Zachary Florez, Rubin Yang, Gerry Guardiola
+ *         Class: CSC 460 Database Design
+ *         Assignment: defaultInserts.java
+ *         Instructor and TA names: Dr.Lester I. McCann, Sourav Mangla, Justin
+ *         doo
+ *         Description: defaultInserts.java consists of all the default strings that we 
+ * 						created on our end so that we know if we are executing our queries 
+ * 						correctly. 
+ * 
+ */
+
 public class defaultInserts {
 
+	
 	public ArrayList<String> getDefaultCustomerInserts() {
 
-		// "INSERT INTO customerTable VALUES (cID,fName,lName,dID,tID,startDate,endDate);",
-
+		// "INSERT INTO customer VALUES (cID,fName,lName,dID,tID,startDate,endDate);"
 		ArrayList<String> res = new ArrayList<>(
 				List.of(
 						"INSERT INTO customer VALUES (10000,'Amy','apple',1,1000001,TO_DATE('2021-12-04','YYYY/MM/DD'),TO_DATE('2033-12-01','YYYY/MM/DD'));",
@@ -22,9 +36,10 @@ public class defaultInserts {
 		return res;
 	}
 
+
 	public ArrayList<String> getDefaultAppointmentInserts() {
 
-
+		// "INSERT INTO appointment VALUES (aID,cID,eID,status);"
 		ArrayList<String> res = new ArrayList<>(
 				List.of(
 						"INSERT INTO appointment VALUES (1, 10000, 1, 1);",
@@ -41,7 +56,10 @@ public class defaultInserts {
 		return res;
 	}
 
+
 	public ArrayList<String> getDefaultTransactionInserts() {
+
+		// "INSERT INTO transact VALUES (tID,amount,DID,time);"
 		ArrayList<String> res = new ArrayList<>(
 				List.of(
 						"INSERT INTO transact VALUES (1000001,7,1,TO_DATE('2021-12-04','YYYY/MM/DD'));",
@@ -56,7 +74,10 @@ public class defaultInserts {
 		return res;
 	}
 
+
 	public ArrayList<String> getDefaultDepartmentInserts() {
+
+		// "INSERT INTO department VALUES (dID,dName);"
 		ArrayList<String> res = new ArrayList<>(
 				List.of(
 						"INSERT INTO department VALUES (1,'Permit');",
@@ -66,7 +87,10 @@ public class defaultInserts {
 		return res;
 	}
 
+
 	public ArrayList<String> getDefaultEmployeeInserts() {
+
+		// "INSERT INTO employee VALUES (eID,fName,lName,DID);"
 		ArrayList<String> res = new ArrayList<>(
 				List.of(
 						"INSERT INTO employee VALUES (1,'Gerry','G',1);",
