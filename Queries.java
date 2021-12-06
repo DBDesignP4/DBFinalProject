@@ -23,7 +23,7 @@ public class Queries {
 		
 		String formatted = split[2] + "/" + split[0] + "/" + split[1];
 		
-		String retval = "SELECT * FROM mihiry4.customer WHERE "
+		String retval = "SELECT * FROM zsf.customer WHERE "
 				+ "cID < " + formatted;
 		
 		return retval;
@@ -77,19 +77,19 @@ public class Queries {
 		String upperBound = splitted[1] + "/" + splitted[0] + "/" + endDate(splitted[0]);
 		
 		
-		String permitSum = "SELECT COUNT(tID) * 7 FROM zsf.transaction WHERE "
+		String permitSum = "SELECT COUNT(tID) * 7 FROM zsf.transact WHERE "
 				+ "time >= " + lowerBound + " and "
 				+ "time <= " + upperBound + " and "
 				+ "DID = 1";
-		String licenseSum = "SELECT COUNT(tID) * 25 FROM zsf.transaction WHERE "
+		String licenseSum = "SELECT COUNT(tID) * 25 FROM zsf.transact WHERE "
 				+ "time >= " + lowerBound + " and "
 				+ "time <= " + upperBound + " and "
 				+ "DID = 2";
-		String registrationSum = "SELECT COUNT(tID) * 100 FROM zsf.transaction WHERE "
+		String registrationSum = "SELECT COUNT(tID) * 100 FROM zsf.transact WHERE "
 				+ "time >= " + lowerBound + " and "
 				+ "time <= " + upperBound + " and "
 				+ "DID = 3";
-		String stateIDSum = "SELECT COUNT(tID) * 12 FROM zsf.transaction WHERE "
+		String stateIDSum = "SELECT COUNT(tID) * 12 FROM zsf.transact WHERE "
 				+ "time >= " + lowerBound + " and "
 				+ "time <= " + upperBound + " and "
 				+ "DID = 4";
