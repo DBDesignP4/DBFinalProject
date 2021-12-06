@@ -116,7 +116,7 @@ public class Queries {
 		//
 		// #########################################################
 		
-		return permitSum + "," + licenseSum + "," + registrationSum + "," + stateIDSum;
+		return permitSum + "#" + licenseSum + "#" + registrationSum + "#" + stateIDSum;
 	}
 	
 	public String query4(String inputDID) {

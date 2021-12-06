@@ -182,25 +182,50 @@ public class Prog4 {
 					
 					s = inputOption.next();
 					
-					String[] queries = q.query3(s).split(",");
-					
+					String[] queries = q.query3(s).split("#");
+					//System.out.println(queries[0]);	
 					ResultSet set1 = stmt.executeQuery(queries[0]);
+					//ResultSet set2 = stmt.executeQuery(queries[1]);
+					//ResultSet set3 = stmt.executeQuery(queries[2]);
+					//ResultSet set4 = stmt.executeQuery(queries[3]);
+					
+					//set1.next();
+					//set2.next();
+					//set3.next();
+					//set4.next();
+					int sum1 = 0;
+					int sum2 = 0;
+					int sum3 = 0;
+					int sum4 = 0;
+
+
+					while (set1.next()) {
+						sum1 = Integer.parseInt(set1.getString(1));
+					}
+					//int sum2 = Integer.parseInt(set2.getString(1));
+					//int sum3 = Integer.parseInt(set3.getString(1));
+					//int sum4 = Integer.parseInt(set4.getString(1));
+					
 					ResultSet set2 = stmt.executeQuery(queries[1]);
-					ResultSet set3 = stmt.executeQuery(queries[2]);
-					ResultSet set4 = stmt.executeQuery(queries[3]);
-					
-					set1.next();
-					set2.next();
-					set3.next();
-					set4.next();
-					
-					int sum1 = Integer.parseInt(set1.getString(1));
-					int sum2 = Integer.parseInt(set2.getString(1));
-					int sum3 = Integer.parseInt(set3.getString(1));
-					int sum4 = Integer.parseInt(set4.getString(1));
-					
+					while (set2.next()) {
+                                                sum2 = Integer.parseInt(set2.getString(1));
+                                        }
+
+					ResultSet set3 = stmt.executeQuery(queries[1]);
+                                        while (set3.next()) {
+                                                sum3 = Integer.parseInt(set3.getString(1));
+                                        }
+
+                                        ResultSet set4 = stmt.executeQuery(queries[1]);
+                                        while (set4.next()) {
+                                                sum4 = Integer.parseInt(set4.getString(1));
+                                        }
+
 					TreeMap<Integer, String> t = new TreeMap<Integer, String>();
-					
+					System.out.println(sum1);	
+					System.out.println(sum2);
+					System.out.println(sum3);
+					System.out.println(sum4);
 					// Put the sums instead of the integers below
 					t.put(sum1, "1");
 					t.put(sum2, "2");
