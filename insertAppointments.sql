@@ -9,4 +9,4 @@ INSERT INTO appointment VALUES (8, 10006, 1, 1);
 INSERT INTO appointment VALUES (9, 10007, 4, 1);
 INSERT INTO appointment VALUES (10, 10008, 1, 0);
 INSERT INTO appointment VALUES (11, 10009, 3, 0);
-INSERT INTO appointment VALUES (12, 88281, 2, 1);
+INSERT INTO appointment VALUES (12, 29140, 3, 1);

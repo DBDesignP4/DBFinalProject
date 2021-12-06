@@ -159,105 +159,73 @@ public class Prog4 {
 					String query = q.query1(s);
 					
 					ResultSet set = stmt.executeQuery(query);
-					
+					System.out.println("#####cID---First Name-----Last Name---ID issue date---Expiry Date---Department ID#####");	
 					while (set.next()) {
-						System.out.println(set.getString(1) + ", " + set.getString(2) + ", " + set.getString(3));
+						System.out.println(String.format("%1$8s",set.getString(1)) + String.format("%1$12s", set.getString(2)) + String.format("%1$15s", set.getString(3)) + String.format("%1$17s",set.getString(6).substring(0, 11)) +  String.format("%1$14s", set.getString(7).substring(0, 11)) +  String.format("%1$15s", set.getString(5)));
 					}
 				} else if (option == 2) {
 					String[] queries = q.query2().split(",");
 				
-					System.out.println(queries[0]);
-
 					ResultSet set1 = stmt.executeQuery(queries[0]);
-					//ResultSet set2 = stmt.executeQuery(queries[1]);
-					//ResultSet set3 = stmt.executeQuery(queries[2]);
-					//ResultSet set4 = stmt.executeQuery(queries[3]);
 				
+					System.out.println("Successful Appointments Per Depeartment");
 
-
+					System.out.print("Permit               : ");
 					while (set1.next()) { 
-						System.out.println(set1.getString(1));
+						System.out.println(String.format("%1$8s", set1.getString(1)));
 					}
 					
+					System.out.print("License              : ");
 					ResultSet set2 = stmt.executeQuery(queries[1]);
 					while (set2.next()) {
-						System.out.println(set2.getString(1));
+						System.out.println(String.format("%1$8s", set2.getString(1)));
 					}
 
-
+					System.out.print("Vehicle Registration : ");
 					ResultSet set3 = stmt.executeQuery(queries[2]);
 					while (set3.next()) {
-                                                System.out.println(set3.getString(1));
+                                                System.out.println(String.format("%1$8s", set3.getString(1)));
                                         }
 
+					System.out.print("State ID             : ");
 					ResultSet set4 = stmt.executeQuery(queries[1]);
 					while (set4.next()) {
-                                                System.out.println(set4.getString(1));
+                                                System.out.println(String.format("%1$8s", set4.getString(1)));
                                         }
 
-
-					/**
-					set1.next();
-					set2.next();
-					set3.next();
-					set4.next();
-
-					System.out.println(set1.getInt(1));
-					System.out.println(set2.getInt(1));
-					System.out.println(set3.getInt(1));
-					System.out.println(set4.getInt(1));
-					**/			
 				} else if (option == 3) {
 					System.out.println("Enter the Month to be checked");
 					
 					s = inputOption.next();
 					
 					String[] queries = q.query3(s).split("#");
-					//System.out.println(queries[0]);	
-					ResultSet set1 = stmt.executeQuery(queries[0]);
-					//ResultSet set2 = stmt.executeQuery(queries[1]);
-					//ResultSet set3 = stmt.executeQuery(queries[2]);
-					//ResultSet set4 = stmt.executeQuery(queries[3]);
 					
-					//set1.next();
-					//set2.next();
-					//set3.next();
-					//set4.next();
 					int sum1 = 0;
 					int sum2 = 0;
 					int sum3 = 0;
 					int sum4 = 0;
 
-
+					ResultSet set1 = stmt.executeQuery(queries[0]);
 					while (set1.next()) {
 						sum1 = Integer.parseInt(set1.getString(1));
 					}
-					//int sum2 = Integer.parseInt(set2.getString(1));
-					//int sum3 = Integer.parseInt(set3.getString(1));
-					//int sum4 = Integer.parseInt(set4.getString(1));
 					
 					ResultSet set2 = stmt.executeQuery(queries[1]);
 					while (set2.next()) {
                                                 sum2 = Integer.parseInt(set2.getString(1));
                                         }
 
-					ResultSet set3 = stmt.executeQuery(queries[1]);
+					ResultSet set3 = stmt.executeQuery(queries[2]);
                                         while (set3.next()) {
                                                 sum3 = Integer.parseInt(set3.getString(1));
                                         }
 
-                                        ResultSet set4 = stmt.executeQuery(queries[1]);
+                                        ResultSet set4 = stmt.executeQuery(queries[3]);
                                         while (set4.next()) {
                                                 sum4 = Integer.parseInt(set4.getString(1));
                                         }
-
-
-                    System.out.println(sum1);	
-					System.out.println(sum2);
-					System.out.println(sum3);
-					System.out.println(sum4);
 					
-					Prog4.Pair[] arr = new  Pair[4];
+					Pair[] arr = new Pair[4];
 					arr[0] = new Pair(1, sum1);
 					arr[1] = new Pair(2, sum2);
 					arr[2] = new Pair(3, sum3);
@@ -274,8 +242,8 @@ public class Prog4 {
 					
 					Arrays.sort(arr);
 					
-					for (int i = 0; i < 4; i++) {
-						System.out.println("Dep : " + arr[i].index + " Sum : " + arr[i].value);
+					for (int i = 3; i >=0; i--) {
+						System.out.println("Dep : " + arr[i].index + " Sum : $" + arr[i].value);
 					}
 				} else if (option == 4) {
 					System.out.println("Enter the Department Number");
