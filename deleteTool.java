@@ -132,13 +132,13 @@ public class deleteTool {
 						System.out.println("Enter DID of the employee you want to delete:");
 						String did = input.next();
 						String[] res = deleteQueries.query4(did);
-						stmt.executeQuery(res[0]);
-						stmt = dbconn.createStatement();
 						stmt.executeQuery(res[1]);
 						stmt = dbconn.createStatement();
 						stmt.executeQuery(res[2]);
 						stmt = dbconn.createStatement();
 						stmt.executeQuery(res[3]);
+						stmt = dbconn.createStatement();
+						stmt.executeQuery(res[0]);
 					//optioni 5
 					} else if(option == 5){
 						System.out.println("Enter TID of the employee you want to delete:");

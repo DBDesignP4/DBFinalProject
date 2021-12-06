@@ -47,6 +47,12 @@ public class deleteQueries {
 		String query4 = "UPDATE yuchan0401.customer "
 				+ "SET customer.DID = NULL "
 				+ "WHERE customer.DID = " + dID;
+
+
+		System.out.println(query2);
+		System.out.println(query3);
+		System.out.println(query4);
+
 		return new String[]{query1,query2,query3,query4};
 	}
 	
