@@ -131,7 +131,7 @@ public class Prog4 {
 					ResultSet set = stmt.executeQuery(query);
 					
 					while (set.next()) {
-						System.out.println(set.getString(1));
+						System.out.println(set.getString(1) + ", " + set.getString(2) + ", " + set.getString(3));
 					}
 				} else if (option == 2) {
 					String[] queries = q.query2().split(",");
@@ -203,6 +203,9 @@ public class Prog4 {
 						System.out.println("First Name : " + set.getString(1) + " Last Name : " + set.getString(2));
 					}
 				}
+				System.out.println("Choose a number from 1-4. Any other number to quit");
+				s = inputOption.next();
+				option = Integer.parseInt(s);
 			}
 		}  catch (SQLException e) {
 			System.err.println("*** SQLException:  " + "Could not fetch query results.");

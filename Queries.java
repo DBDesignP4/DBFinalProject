@@ -23,7 +23,7 @@ public class Queries {
 		
 		String formatted = split[2] + "-" + split[0] + "-" + split[1];
 		
-		String retval = "SELECT * FROM zsf.customer WHERE "
+		String retval = "SELECT * FROM yuchan0401.customer WHERE "
 				+ "endDate < TO_DATE('" + formatted + "', 'YYYY/MM/DD')";
 		
 		return retval;
@@ -34,13 +34,13 @@ public class Queries {
 	 * @return Returns 4 queries for each department separated by comma
 	 */
 	public String query2() {
-		String permit = "SELECT COUNT(aID) FROM zsf.appointment WHERE "
+		String permit = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
 				+ "EID = 1 and status = 1;";
-		String license = "SELECT COUNT(aID) FROM zsf.appointment WHERE "
+		String license = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
 				+ "EID = 2 and status = 1;";
-		String registration = "SELECT COUNT(aID) FROM zsf.appointment WHERE "
+		String registration = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
 				+ "EID = 3 and status = 1;";
-		String stateID = "SELECT COUNT(aID) FROM zsf.appointment WHERE "
+		String stateID = "SELECT COUNT(aID) FROM yuchan0401.appointment WHERE "
 				+ "EID = 4 and status = 1;";
 		
 		return permit + "," + license + "," + registration + "," + stateID;
@@ -77,19 +77,19 @@ public class Queries {
 		String upperBound = splitted[1] + "-" + splitted[0] + "-" + endDate(splitted[0]);
 		
 		
-		String permitSum = "SELECT COUNT(tID) * 7 FROM zsf.transact WHERE "
+		String permitSum = "SELECT COUNT(tID) * 7 FROM yuchan0401.transact WHERE "
 				+ "time >= TO_DATE('" + lowerBound + "', 'YYYY/MM/DD') and "
 				+ "time <= TO_DATE('" + upperBound + "', 'YYYY/MM/DD') and "
 				+ "DID = 1";
-		String licenseSum = "SELECT COUNT(tID) * 25 FROM zsf.transact WHERE "
+		String licenseSum = "SELECT COUNT(tID) * 25 FROM yuchan0401.transact WHERE "
 				+ "time >= TO_DATE('" + lowerBound + "', 'YYYY/MM/DD') and "
 				+ "time <= TO_DATE('" + upperBound + "', 'YYYY/MM/DD') and "
 				+ "DID = 2";
-		String registrationSum = "SELECT COUNT(tID) * 100 FROM zsf.transact WHERE "
+		String registrationSum = "SELECT COUNT(tID) * 100 FROM yuchan0401.transact WHERE "
 				+ "time >= TO_DATE('" + lowerBound + "', 'YYYY/MM/DD') and "
 				+ "time <= TO_DATE('" + upperBound + "', 'YYYY/MM/DD') and "
 				+ "DID = 3";
-		String stateIDSum = "SELECT COUNT(tID) * 12 FROM zsf.transact WHERE "
+		String stateIDSum = "SELECT COUNT(tID) * 12 FROM yuchan0401.transact WHERE "
 				+ "time >= TO_DATE('" + lowerBound + "', 'YYYY/MM/DD') and "
 				+ "time <= TO_DATE('" + upperBound + "', 'YYYY/MM/DD') and "
 				+ "DID = 4";
@@ -121,10 +121,10 @@ public class Queries {
 	
 	public String query4(String inputDID) {
 		String retval = "select fName, lName " +
-		"from zsf.Customer, zsf.Appointment, zsf.Department " +
-		"where zsf.Customer.cID = zsf.Appointment.CID and " +
-		"zsf.Appointment.status = 1 and zsf.Department.dID = zsf.Customer.DID " +
-		"and zsf.Department.dName = " + inputDID;
+		"from yuchan0401.Customer, yuchan0401.Appointment, yuchan0401.Department " +
+		"where yuchan0401.Customer.cID = yuchan0401.Appointment.CID and " +
+		"yuchan0401.Appointment.status = 1 and yuchan0401.Department.dID = yuchan0401.Customer.DID " +
+		"and yuchan0401.Department.dName = " + inputDID;
 		
 		return retval;
 	}
