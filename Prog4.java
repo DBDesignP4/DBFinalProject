@@ -139,6 +139,12 @@ public class Prog4 {
 				System.exit(-1);
 			}
 			int option = Integer.parseInt(s);
+			
+			if (option > 4 || option < 1) {
+				System.out.println("Goodbye!");
+				System.exit(-1);
+			}
+			
 			Queries q = new Queries();
 			
 			// option 1
@@ -290,7 +296,18 @@ public class Prog4 {
 				}
 				System.out.println("Choose a number from 1-4. Any other number to quit");
 				s = inputOption.next();
+				if (!isNumeric(s)) {
+					System.out.println("Input wasn't correct format. Please re run!");
+					System.exit(-1);
+				}
 				option = Integer.parseInt(s);
+				
+
+				
+				if (option > 4 || option < 1) {
+					System.out.println("Goodbye!");
+					System.exit(-1);
+				}
 			}
 		}  catch (SQLException e) {
 			System.err.println("*** SQLException:  " + "Could not fetch query results.");

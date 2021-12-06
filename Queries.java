@@ -124,7 +124,7 @@ public class Queries {
 		"from yuchan0401.Customer, yuchan0401.Appointment, yuchan0401.Department " +
 		"where yuchan0401.Customer.cID = yuchan0401.Appointment.CID and " +
 		"yuchan0401.Appointment.status = 1 and yuchan0401.Department.dID = yuchan0401.Customer.DID " +
-		"and yuchan0401.Department.dName = " + inputDID;
+		"and yuchan0401.Department.dID = " + inputDID;
 		
 		return retval;
 	}

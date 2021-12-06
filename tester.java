@@ -47,6 +47,8 @@ public class tester {
         
         
         System.out.println(q.query3("05/2021"));
+        System.out.println(q.query4("1"));
+
 
     }
     
