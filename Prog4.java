@@ -15,7 +15,7 @@ import java.util.TreeMap;
  * Class: CSC 460 Database Design 
  * Assignment: Prog3.java
  * Instructor and TA names: Dr.Lester I. McCann, Sourav Mangla, Justin doo
- * Description: 
+ * Description: Runs Four Queries, main program for the entire project. 
  */
 public class Prog4 {
 	
@@ -26,11 +26,6 @@ public class Prog4 {
 			index = i;
 			value = v;
 		}
-
-
-
-
-
 
 		@Override
 		public int compareTo(Object o) {
@@ -132,6 +127,7 @@ public class Prog4 {
 		}
 
 		try {
+			// Ask User for what type of Query they want to run. 
 			System.out.println("Choose a number from 1-4. Any other number to quit");
 			String s = inputOption.next();
 			if (!isNumeric(s)) {
@@ -140,6 +136,7 @@ public class Prog4 {
 			}
 			int option = Integer.parseInt(s);
 			
+			// If user does not enter valid input then we quit. 
 			if (option > 4 || option < 1) {
 				System.out.println("Goodbye!");
 				System.exit(-1);
@@ -151,6 +148,7 @@ public class Prog4 {
 			while (1 == 1) {
 				stmt = dbconn.createStatement();
 				
+				// Query 1
 				if (option == 1) {
 					System.out.println("Enter the date to be checked");
 					
@@ -163,6 +161,8 @@ public class Prog4 {
 					while (set.next()) {
 						System.out.println(String.format("%1$8s",set.getString(1)) + String.format("%1$12s", set.getString(2)) + String.format("%1$15s", set.getString(3)) + String.format("%1$17s",set.getString(6).substring(0, 11)) +  String.format("%1$14s", set.getString(7).substring(0, 11)) +  String.format("%1$15s", set.getString(5)));
 					}
+					
+				// Query 2 	
 				} else if (option == 2) {
 					String[] queries = q.query2().split(",");
 				
@@ -192,7 +192,8 @@ public class Prog4 {
 					while (set4.next()) {
                                                 System.out.println(String.format("%1$8s", set4.getString(1)));
                                         }
-
+				
+				// Query 3 
 				} else if (option == 3) {
 					System.out.println("Enter the Month to be checked");
 					
@@ -230,21 +231,13 @@ public class Prog4 {
 					arr[1] = new Pair(2, sum2);
 					arr[2] = new Pair(3, sum3);
 					arr[3] = new Pair(4, sum4);
-					// Put the sums instead of the integers below
-//					t.put(sum1, "1");
-//					t.put(sum2, "2");
-//					t.put(sum3, "3");
-//					t.put(sum4, "4");
-					
-//					ArrayList<Integer> arr = new ArrayList<Integer>();
-//					arr.addAll(t.keySet());
-					
-					
 					Arrays.sort(arr);
 					
 					for (int i = 3; i >=0; i--) {
 						System.out.println("Dep : " + arr[i].index + " Sum : $" + arr[i].value);
 					}
+					
+				// Query 4	
 				} else if (option == 4) {
 					System.out.println("Enter the Department Number");
 					System.out.println("1 for Permit");
@@ -262,6 +255,8 @@ public class Prog4 {
 						System.out.println("First Name : " + set.getString(1) + " Last Name : " + set.getString(2));
 					}
 				}
+				
+				// Ask user again what they would like to do and repeat. 
 				System.out.println("Choose a number from 1-4. Any other number to quit");
 				s = inputOption.next();
 				if (!isNumeric(s)) {
