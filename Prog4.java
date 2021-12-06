@@ -251,7 +251,7 @@ public class Prog4 {
 					System.out.println(sum3);
 					System.out.println(sum4);
 					
-					Prog4.Pair[] arr = new  Pair[3];
+					Prog4.Pair[] arr = new  Pair[4];
 					arr[0] = new Pair(1, sum1);
 					arr[1] = new Pair(2, sum2);
 					arr[2] = new Pair(3, sum3);
