@@ -241,8 +241,8 @@ public class Insert {
     	} else {
     		insertString += "NULL";
     	}
-    	insertString += ", '" + startDate + "', '" + endDate;
-    	insertString += "');";
+    	insertString += ", TO_DATE('" + startDate + "','YYYY/MM/DD'), TO_DATE('" + endDate;
+    	insertString += "','YYYY/MM/DD'));";
 		return insertString;
 	}
 
@@ -278,9 +278,9 @@ public class Insert {
 		}
     	String insertString = "INSERT INTO transact VALUES (";
     	int tID = randomTransactionIDGenerator();
-    	insertString = insertString + tID + ", " + amount + ", " + dID + ", '"
+    	insertString = insertString + tID + ", " + amount + ", " + dID + ", TO_DATE('"
     			+ startDate;
-    	insertString += "');";
+    	insertString += "','YYYY/MM/DD');";
 		return insertString;
     	
 
