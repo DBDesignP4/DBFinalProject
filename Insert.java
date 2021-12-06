@@ -266,7 +266,7 @@ public class Insert {
 		} else if(dID == 4) {
 			amount = 12;
 		}
-    	String insertString = "INSERT INTO transaction VALUES (";
+    	String insertString = "INSERT INTO transact VALUES (";
     	int tID = randomTransactionIDGenerator();
     	insertString = insertString + tID + ", " + amount + ", " + dID + ", '"
     			+ startDate;
