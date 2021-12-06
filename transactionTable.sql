@@ -1,4 +1,4 @@
-CREATE TABLE transaction (
+CREATE TABLE transact (
         tID numeric(7) Primary Key NOT NULL,
         amount INT NOT NULL,
         DID INT NOT NULL,
