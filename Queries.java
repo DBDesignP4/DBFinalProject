@@ -18,6 +18,12 @@ public class Queries {
 	public Queries() {
 	}
 	
+
+	/**
+	 * Function called that returns the string of the query1 to be ran. 
+	 * @param inputDate
+	 * @return String
+	 */
 	public String query1(String inputDate) {
 		String[] split = inputDate.split("/");
 		
@@ -29,8 +35,10 @@ public class Queries {
 		return retval;
 	}
 	
+
 	/**
-	 *  
+	 *  Function called that returns the string of the query2 to be ran
+	 * 
 	 * @return Returns 4 queries for each department separated by comma
 	 */
 	public String query2() {
@@ -46,11 +54,12 @@ public class Queries {
 		return permit + "," + license + "," + registration + "," + stateID;
 	}
 	
+
 	/**
 	 * Converts MM/YYYY to YYYY/MM
 	 * 
 	 * @param month for query 3 in the format MM/YYYY
-	 * @return 
+	 * @return String
 	 */
 	private String endDate(String month) {
 		int m = Integer.parseInt(month);
@@ -63,7 +72,9 @@ public class Queries {
 		}
 	}
 
+
 	/**
+	 * Function called that returns the string of the query3 to be ran
 	 * 
 	 * @param inputMonth : in the form of MM/YYYY
 	 * @return 4 queries for each department separated by comma
@@ -109,16 +120,14 @@ public class Queries {
 		ArrayList<Integer> arr = new ArrayList<Integer>();
 		arr.addAll(t.keySet());
 		
-		for (int i = 0; i < 4; i++) {
-			//System.out.println(t.get(arr.get(i)));
-		}
-		//System.out.println(t.keySet());
-		//
-		// #########################################################
-		
 		return permitSum + "#" + licenseSum + "#" + registrationSum + "#" + stateIDSum;
 	}
 	
+	
+	/**
+	 * Function called that returns the string of the query4 to be ran. 
+	 * @return String. 
+	 */
 	public String query4(String inputDID) {
 		String retval = "select fName, lName " +
 		"from yuchan0401.Customer, yuchan0401.Appointment, yuchan0401.Department " +
@@ -128,6 +137,4 @@ public class Queries {
 		
 		return retval;
 	}
-	
-	
 }
