@@ -8,6 +8,11 @@
  */
 public class deleteQueries {
 	
+	/**
+	 * query1: removing customer
+	 * @param cid
+	 * @return
+	 */
 	public static String[] query1(String cid) {
 		int cID = Integer.parseInt(cid);
 		String query1 = "DELETE FROM yuchan0401.customer "
@@ -17,6 +22,11 @@ public class deleteQueries {
 		return new String[]{query1,query2};
 	}
 	
+	/**
+	 * query2: removing employee
+	 * @param eid
+	 * @return
+	 */
 	public static String[] query2(String eid) {
 		int eID = Integer.parseInt(eid);
 		String query1 = "DELETE FROM yuchan0401.appointment "
@@ -26,6 +36,11 @@ public class deleteQueries {
 		return new String[]{query1,query2};
 	}
 	
+	/**
+	 * removing appointment
+	 * @param aid
+	 * @return
+	 */
 	public static String query3(String aid) {
 		int aID = Integer.parseInt(aid);
 		String query1 = "DELETE FROM yuchan0401.appointment "
@@ -33,6 +48,11 @@ public class deleteQueries {
 		return query1;
 	}
 
+	/**
+	 * removing department
+	 * @param did
+	 * @return
+	 */
 	public static String[] query4(String did) {
 		// TODO Auto-generated method stub
 		int dID = Integer.parseInt(did);
@@ -56,6 +76,11 @@ public class deleteQueries {
 		return new String[]{query1,query2,query3,query4};
 	}
 	
+	/**
+	 * removing transaction
+	 * @param tid
+	 * @return
+	 */
 	public static String[] query5(String tid) {
 		int tID = Integer.parseInt(tid);
 		String query1 = "DELETE FROM yuchan0401.customer "
